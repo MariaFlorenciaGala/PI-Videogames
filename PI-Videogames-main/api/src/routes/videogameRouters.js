@@ -1,15 +1,15 @@
 const { Router } = require('express');
-const videoGamesRouters = Router();
+const videogamesRouters = Router();
 
 //HANDLERS
-const getAllVideoGameHandlers = require('../handlers/videoGamesHandlers/getAllVideoGamesHandlers')
-const getVideoGamesByIdHandlers = require('../handlers/videoGamesHandlers/getVideoGamesByIdHandlers')
-const postNewVideoGamesHandlers = require('../handlers/videoGamesHandlers/postNewVideoGamesHandlers')
+const getVideogameHandlers = require('../handlers/videogameHandlers/getAllVideogamesHandlers')
+const getVideogamesByIdHandlers = require('../handlers/videogameHandlers/getVideogamesByIdHandlers')
+const postNewVideogameHandlers = require('../handlers/videogameHandlers/postNewVideogameHandlers')
 
 
-videoGamesRouters.get('',getAllVideoGameHandlers)
-videoGamesRouters.get('/name',getAllVideoGameHandlers)
-videoGamesRouters.get('/:id',getVideoGamesByIdHandlers)
-videoGamesRouters.post('',postNewVideoGamesHandlers)
+videogamesRouters.get('',getVideogameHandlers)
+videogamesRouters.get('/name',getVideogameHandlers)
+videogamesRouters.get('/:id',getVideogamesByIdHandlers)
+videogamesRouters.post('',postNewVideogameHandlers)
 
-module.exports = videoGamesRouters
+module.exports = videogamesRouters

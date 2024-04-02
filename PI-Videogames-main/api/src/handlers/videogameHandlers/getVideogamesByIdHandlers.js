@@ -1,7 +1,7 @@
 //CONTROLLERS
-const getVideogamesById = require('../../controllers/videoGamesControllers/getVideogamesById')
+const getVideogamesById = require('../../controllers/videogamesControllers/getVideogamesById')
 
-const getVideoGamesByIdHandlers = async(req, res) => {
+const getVideogamesByIdHandlers = async(req, res) => {
     try{
         const { id } = req.params;
         const source = isNaN(id) ? 'db' : 'api';
@@ -13,4 +13,4 @@ const getVideoGamesByIdHandlers = async(req, res) => {
         res.status(400).json({error: error.message})
     }
 }
- module.exports = getVideoGamesByIdHandlers
+ module.exports = getVideogamesByIdHandlers
