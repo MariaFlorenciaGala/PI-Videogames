@@ -8,7 +8,7 @@ const getVideogameHandlers = async(req, res) => {
         
         const videoGamesDB = await getVideogamesDB(name)
         const videoGamesAPI = await getVideogamesAPI(name)
-        const allVideoGames = {...videoGamesAPI,...videoGamesDB}
+        const allVideoGames = [...videoGamesAPI,...videoGamesDB]
         res.status(200).json(allVideoGames);
         if(name)console.log(`El videojuego: ${name},ha tenido coincidencias`)
 

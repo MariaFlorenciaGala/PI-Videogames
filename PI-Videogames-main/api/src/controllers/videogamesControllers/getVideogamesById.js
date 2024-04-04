@@ -5,7 +5,7 @@ const { Videogame, Genres } = require ('../../db')
 
 const getVideogameById = async (id, source) => {
     if(source === 'api'){
-        const dataAPI = await axios.get(`https://api.rawg.io/api/games/${id}?key=6ee850ff9922471a9e679372fda9b60e`)
+        const dataAPI = await axios.get(`${URL}/games/${id}?key=${API_KEY}`)
         const data = await dataAPI.data
 
         const dataFiltrada = {
