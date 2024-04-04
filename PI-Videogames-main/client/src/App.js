@@ -1,11 +1,22 @@
+import { Routes, Route } from 'react-router-dom'
+//ESTILOS
 import './App.css';
+
+//COMPONENTES
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Videogames</h1>
-    </div>
+        /*<Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:id" element={<Detail />} />
+          <Route path="/"element={<ActivityCreator />}/>
+        </Routes>
+        */
   );
 }
 
 export default App;
+
+
