@@ -25,7 +25,6 @@ const getVideogamesAPI = async(name) => {
     })
     if(!name) return infoAPI 
     else return infoAPI.filter(videogame => videogame.name.toLowerCase().includes(name.toLowerCase()));
-
 }
 
 module.exports = getVideogamesAPI

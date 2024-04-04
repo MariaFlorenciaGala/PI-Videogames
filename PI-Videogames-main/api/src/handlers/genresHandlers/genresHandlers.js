@@ -4,12 +4,9 @@ const { getGenresAPI } = require('../../controllers/genresControllers/getGenresA
 
 const getGenresHandlers = async(req, res) => {
     try{
-        genresDB = await getGenresDB()
         genresAPI = await getGenresAPI()
-        allGenres = [...genresAPI,...genresDB]
-
-        res.status(200).json(allGenres);
-        return allGenres
+        genresDB = await getGenresDB(genresAPI)
+        res.status(200).json(genresDB);
     } catch(error){
         res.status(400).json({error: error.message})
     }

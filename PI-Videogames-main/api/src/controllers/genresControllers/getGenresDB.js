@@ -1,12 +1,14 @@
-const { API_KEY , URL} = process.env;
 const { Genres } = require('../../db')
 
-//https://api.rawg.io/api/genres?key=6ee850ff9922471a9e679372fda9b60e
-//https://api.rawg.io/api/genres?key=
+const getGenresDB = async(allGenreVideogames) => {  
+    // Inserta todos los genres en la BDD si no existen
+    for (const genre of allGenreVideogames) {
+        await Genres.findOrCreate({ where: {name: genre.name} });
+    }
+    const genresDB = await Genres.findAll({
+      });
 
-const getGenresDB = async() => {  
-    const genresDB  = await Genres.findAll();
-    return genresDB
+    return genresDB;
 };
     
 module.exports = {

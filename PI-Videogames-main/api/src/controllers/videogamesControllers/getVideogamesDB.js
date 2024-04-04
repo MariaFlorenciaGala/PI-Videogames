@@ -1,4 +1,3 @@
-
 const { Op } = require('sequelize'); 
 const { Videogame, Genres } = require('../../db');
 

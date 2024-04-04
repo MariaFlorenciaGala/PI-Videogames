@@ -1,10 +1,10 @@
 //CONTROLLERS
-const postNewVideoGame = require('../../controllers/videoGamesControllers/postNewVideoGame')
+const postNewVideogame = require('../../controllers/videogamesControllers/postNewVideogame')
 
-const  postNewVideoGamesHandlers = async(req, res) => {
+const  postNewVideogamesHandlers = async(req, res) => {
     try{
-        const  videogame  = req.body
-        const response= await postNewVideoGame(videogame)
+        const { name, description, platforms, image, released, rating, genres } = req.body
+        const response= await postNewVideogame(name, description, platforms, image, released, rating, genres )
         console.log(`Videogame creado con éxito`)
         res.status(200).json(response);
     } catch(error){
@@ -12,4 +12,4 @@ const  postNewVideoGamesHandlers = async(req, res) => {
     }
 }
 
-module.exports = postNewVideoGamesHandlers
+module.exports = postNewVideogamesHandlers
