@@ -27,7 +27,7 @@ const Home = () => {
 
   function handleSubmit(e){
     e.preventDefault()
-    dispatch(getByName())
+    dispatch(getByName(searchString)) 
   }
 
   useEffect(() =>{
