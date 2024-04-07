@@ -4,13 +4,14 @@ import "./cards.styles.css";
 //CONTROLLERS
 import Card from '../card/card'
 
-const Cards = () => {
+const Cards = ({ allVideogames }) => {
+  const videogamesList = allVideogames
   return (
     <div className='cards'>
-      <div>CARDS</div>
-      <Card />
-      <Card />
-      <Card />
+      { videogamesList?.map((videogame) => 
+      <Card videogame={videogame}/>
+    ) }
+
     </div>
   )
   };

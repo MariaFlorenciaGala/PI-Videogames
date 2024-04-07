@@ -1,13 +1,13 @@
 import { GET_ALL_VIDEOGAMES,
     GET_DETAIL_VIDEOGAME,
+    CLEAN_DETAIL,
     GET_ALL_GENRES,
     GET_BY_NAME,
-    ORD_BY_GENRE,
-    ORD_BY_ALPHA,
-    ORD_ALPHA_REV,
-    ORD_BY_PLATFORMS,
-    ORD_BY_RATING,
-    CLEAN_DETAIL,
+    FILTER_BY_GENRE,
+    FILTER_BY_ALPHA,
+    FILTER_ALPHA_REV,
+    FILTER_BY_PLATFORMS,
+    FILTER_BY_RATING,
     POST_VIDEOGAMES } from "./actionTypes";
 
 const initialState = {
@@ -18,7 +18,6 @@ const initialState = {
 }
 
 function rootReducer (state = initialState, action){
-
     switch(action.type){
         case GET_ALL_VIDEOGAMES:
             return {
@@ -41,27 +40,27 @@ function rootReducer (state = initialState, action){
             ...state,
             allVideogames: action.payload
         }
-        case ORD_BY_GENRE:
+        case FILTER_BY_GENRE:
         return {
             ...state,
             allVideogames: action.payload
         }
-        case ORD_BY_ALPHA :
+        case FILTER_BY_ALPHA :
         return {
             ...state,
             allVideogames: action.payload
         }        
-        case ORD_ALPHA_REV:
+        case FILTER_ALPHA_REV:
         return {
             ...state,
             allVideogames: action.payload
         }
-        case ORD_BY_PLATFORMS:
+        case FILTER_BY_PLATFORMS:
             return {
                 ...state,
                 allVideogames: action.payload
         }
-        case ORD_BY_RATING:
+        case FILTER_BY_RATING:
             return {
                 ...state,
                 allVideogames: action.payload
