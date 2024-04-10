@@ -3,8 +3,16 @@ require('dotenv').config
 const { API_KEY, URL } = process.env;
 
 const getVideogamesAPI = async(name) => {
-    const data = await axios.get(`${URL}/games?key=${API_KEY}`)
-    const { results } = data.data 
+    const promises = [];
+    for (let i = 1; i <= 35; i++) {
+        promises.push(
+            axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`)
+                .then(response => response.data.results)
+        );
+    }
+    const resultsArrays = await Promise.all(promises);
+    const results = resultsArrays.flat();
+
     const infoAPI = results.map((videogame)=>{
         return{
             id: videogame.id,
