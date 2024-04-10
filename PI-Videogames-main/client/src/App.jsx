@@ -10,6 +10,7 @@ import Home from './views/home/home'
 import Detail from './views/details/detail'
 import NewVideogame from './views/newVideogame/newVideogame';
 import Landing from './views/landing/landing'
+import AboutMe from './views/aboutMe/aboutMe';
 
 
 function App() {
@@ -18,11 +19,12 @@ function App() {
   return (
     <div>
         <Nav />
-        <Routes>
+      <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/:id" element={<Detail />} />
-        <Route path="/" element={<NewVideogame/>} />
+        <Route path="/create" element={<NewVideogame/>} />
+        <Route path='/aboutMe' element={<AboutMe />}/>
       </Routes>
     </div>
   );
