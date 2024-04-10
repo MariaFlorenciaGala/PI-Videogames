@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import "./card.styles.css";
 
+//COMPONENTES
+import Button from '../buttons/button'
+
 
 const Card = ({videogame}) => {
-
+  
   return (
     <div className="card">
       <h1>Nombre:{videogame.name}</h1>
@@ -11,7 +14,7 @@ const Card = ({videogame}) => {
       <h2>Rating:{videogame.rating}</h2>
       <h2>Plataformas: {
         videogame.platforms.map((platform) => platform)}</h2>
-      <Link to={`/:id` }><button>Más info</button></Link>
+      <Link to={`/${videogame.id}` }><button>Más info</button></Link>
     </div>
   )
   };
