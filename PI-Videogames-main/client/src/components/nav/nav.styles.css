@@ -1,0 +1,24 @@
+.allNav {
+    display: flex;
+    padding: 20px;
+    font-size: 1rem;
+    text-align: center;
+    justify-content: space-between;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.76234243697479) 21%, rgba(0,212,255,1) 100%);
+  }
+  
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+    transition: color 0.25s;
+    -webkit-transition: color 0.25s;
+    -moz-transition: color 0.25s;
+    -ms-transition: color 0.25s;
+    -o-transition: color 0.25s;
+  }
+  
+  a:hover {
+    color: #6f8cdb;
+  }
