@@ -1,6 +1,7 @@
 .search {
     display: inline-block;
     position: relative;
+    margin-bottom: 1%;
   }
   
   .search input[type="text"] {
@@ -28,6 +29,6 @@
   .search button[type="submit"]:hover {
     transform: scale(1.1);
     color: rgb(255, 255, 255);
-    background-color: #00b7ffab;
+    background-color: #034d92d2;
   }
   
