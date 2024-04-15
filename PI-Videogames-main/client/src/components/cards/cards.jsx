@@ -7,7 +7,7 @@ import Card from '../card/card'
 const Cards = ({ allVideogames }) => {
   const videogamesList = allVideogames
   return (
-    <div className='cards'>
+    <div className='container-cards'>
       { videogamesList?.map((videogame) => 
       <Card key={videogame.id} videogame={videogame}/>
     ) }

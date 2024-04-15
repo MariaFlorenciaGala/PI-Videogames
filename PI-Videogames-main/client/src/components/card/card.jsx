@@ -2,20 +2,30 @@ import { Link } from "react-router-dom";
 import "./card.styles.css";
 
 //COMPONENTES
-import Button from '../buttons/button'
 
 
 const Card = ({videogame}) => {
   
   return (
     <div className="card">
-      <h1>Nombre:{videogame.name}</h1>
-      <img src={videogame.image }alt='imagen del videojuego'/>
-      <h2>Rating:{videogame.rating}</h2>
-      <h2>Plataformas: {
-        videogame.platforms.map((platform) => platform)}</h2>
-      <Link to={`/${videogame.id}` }><button>Más info</button></Link>
+        <div className="cardImg">
+          <img src={videogame.image} alt={videogame.name} />
+        </div>
+        <div className="cardFooter">
+          <h3>{videogame.name}</h3>
+          <div className="cardGenres">
+          {videogame.genres.map((genre)=>{
+              return <li>{genre.name}</li>
+          })}
+          <div>
+        </div>
+        </div>
+        <div>
+           <button className="button"><Link to={`/${videogame.id}`}>Mas info</Link></button>
+        </div>
     </div>
+   
+</div>
   )
   };
 
