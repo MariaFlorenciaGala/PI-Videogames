@@ -9,7 +9,7 @@ const Cards = ({ allVideogames }) => {
   return (
     <div className='cards'>
       { videogamesList?.map((videogame) => 
-      <Card videogame={videogame}/>
+      <Card key={videogame.id} videogame={videogame}/>
     ) }
 
     </div>

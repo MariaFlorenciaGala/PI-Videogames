@@ -1,7 +1,5 @@
 
 //import "./searchBar.css";
-//COMPONENTES
-import Filters from '../filters/filters'
 
 const SearchBar = ({ handleChange, handleSubmit }) => {
     return (
@@ -10,7 +8,6 @@ const SearchBar = ({ handleChange, handleSubmit }) => {
         <input placeholder='Buscar por nombre' type='search'/>
         <button type='submit' onClick={handleSubmit}>Buscar</button>
       </form>
-      <Filters />
       </>
     )
     };

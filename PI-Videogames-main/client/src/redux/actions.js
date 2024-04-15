@@ -3,15 +3,13 @@ import axios from 'axios';
 //ACTION TYPES
 import { GET_ALL_VIDEOGAMES,
     GET_DETAIL_VIDEOGAME,
-    CLEAN_DETAIL,
     GET_ALL_GENRES,
-    GET_BY_NAME,
+    CLEAN_DETAIL,
     FILTER_BY_GENRE,
-    FILTER_BY_ALPHA,
-    FILTER_ALPHA_REV,
-    FILTER_BY_PLATFORMS,
-    FILTER_BY_RATING,
-    POST_VIDEOGAMES } from './actionTypes'
+    FILTER_BY_SOURCE,
+    SEARCH_VIDEOGAMES,
+    ORDER_VIDEOGAMES,
+    POST_VIDEOGAMES } from "./actionTypes";
 
     //ACTIONS A LA DB
     export function getAllVideogames(){
@@ -49,7 +47,7 @@ import { GET_ALL_VIDEOGAMES,
                 const infoAPI = await axios.get(`http://localhost:3001/videogames/?name=${name}`);
                 return dispatch(
                     { 
-                        type: GET_BY_NAME,  
+                        type: SEARCH_VIDEOGAMES,  
                         payload: infoAPI.data
                     });
             } catch (error) {
@@ -105,31 +103,17 @@ import { GET_ALL_VIDEOGAMES,
         }
     }
 
-    export const filterByPlatform = (platform) => {
-        return {
-            type: FILTER_BY_PLATFORMS,
-            payload: platform
+    export const filterBySource = (source) => {
+        return{
+            type: FILTER_BY_SOURCE,
+            payload: source
         }
     }
+    
 
-    export const filterByAlpha = (order) => {
-        return {
-            type: FILTER_BY_ALPHA,
+    export const orderVideogameS = (order) => {
+        return{
+            type: ORDER_VIDEOGAMES,
             payload: order
-        }
-    }
-
-    export const filterByAlphaRev = (order) => {
-        const rev = filterByAlpha(order).revert
-        return {
-            type: FILTER_ALPHA_REV,
-            payload: rev
-        }
-    }
-
-    export const filterByRating = (rating) => {
-        return {
-            type: FILTER_BY_RATING,
-            payload: rating
         }
     }

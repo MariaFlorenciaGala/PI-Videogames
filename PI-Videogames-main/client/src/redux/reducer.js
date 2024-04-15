@@ -49,9 +49,19 @@ function rootReducer (state = initialState, action){
                 allGenres: action.payload
             }
         case FILTER_BY_GENRE:
-            if (filterSource !== 'defect'){
+            case FILTER_BY_GENRE:
+                const filterByGenre = action.payload === 'defect' ?
+                [...state.copyAllVideogames] :
+                state.copyAllVideogames.filter((videogame) => videogame.genres.some(genre => genre.name === action.payload));
+                return {
+                    ...state,
+                    allVideogames: filterByGenre,
+                    filterGenre: action.payload
+                };
+
+/*             if (filterSource !== 'defect'){
                 const filterBySource = 
-                    state.filterSource === 'api'? 
+                    state.filterSource === 'api' ? 
                     [ ...state.copyAllVideogames].filter((videogame) => !isNaN(videogame.id)):
                     [...state.copyAllVideogames].filter((videogame) => isNaN(videogame.id));
                 const filterByGenre = 
@@ -72,7 +82,7 @@ function rootReducer (state = initialState, action){
                     allVideogames: filterByGenre,
                     filter: action.payload
                 }
-            }
+            } */
         case FILTER_BY_SOURCE :
             if(state.filterGenre !== 'defect'){
                 const filterByGenre = 
@@ -100,7 +110,7 @@ function rootReducer (state = initialState, action){
                 const filterBySource = 
                     action.payload === 'defect'? 
                     [...state.copyAllVideogames]:
-                    [...state.copyAllVideogames].filter((videogame)=> !isNaN(videogame.id)) :
+                    [...state.copyAllVideogames].filter((videogame)=> !isNaN(videogame.id)) 
                     return {
                         ...state,
                         allVideogames: filterBySource,
@@ -132,13 +142,13 @@ function rootReducer (state = initialState, action){
                         ...state,
                         allVideogames : videoDes
                     }
-                case "higherRating":
+                case "higherRat":
                     const higherRating = [...state.allVideogames].sort((a,b) => b.rating - a.rating)
                     return {
                         ...state,
                         allVideogames : higherRating
                     }
-                case "lowerRating":
+                case "lowerRat":
                     const lowerRating = [...state.allVideogames].sort((a,b) => a.rating - b.rating)
                     return {
                         ...state,
@@ -148,13 +158,12 @@ function rootReducer (state = initialState, action){
                     return {
                         ...state
                     }
-        }
-
+            }
         case POST_VIDEOGAMES:
             return {
                 ...state,
                 videogameCrate: action.payload
-        }        
+            }        
         default:
             return state
     }

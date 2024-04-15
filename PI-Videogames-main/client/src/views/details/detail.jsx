@@ -2,29 +2,36 @@
 //import "./detail.jsx";
 
 //REACT - REDUX
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-
+import { useParams } from 'react-router-dom'
 //ACTIONS
-import  { getVideogamesById } from '../../redux/actions'
-
+import  { getVideogamesById, cleanDetail } from '../../redux/actions'
 
 const Detail = () => {
   const dispatch = useDispatch()
-  
+  const { id } = useParams()
+  const videogameId = useSelector(state => state.detailVideogame)
+
   useEffect(() =>{
-    dispatch(getVideogamesById())//Suscripcion cuando se monta
-    
-  }, [dispatch])
+    dispatch(getVideogamesById(id));
+    return () => {
+      dispatch(cleanDetail())      
+    }    
+  }, [dispatch, id])
 
     return (
       <div>
         <div>X</div>
-        <div>Detail de cada juego</div>
-        <h2>Descripción: {}</h2>
-        <h2>Fecha de lanzamiento: </h2>
-        <h2>Generos: </h2>
-        
+        <h1>{videogameId.name}</h1>
+        <h2>Fecha de lanzamiento: {videogameId.released} </h2>
+        <h2>Generos: </h2> {
+                  videogameId.genres?.map((genre)=>{
+                      return <h3 key={genre.id} >{genre.name}</h3>
+                    })
+                    }
+        <h2>Descripción:</h2>
+          <div dangerouslySetInnerHTML= {{ __html: videogameId.description }}></div>   
       </div>
     )
     };

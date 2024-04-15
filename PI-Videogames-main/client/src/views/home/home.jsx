@@ -10,7 +10,7 @@ import  { getAllVideogames, getByName } from '../../redux/actions'
 //COMPONENTES
 import Cards from '../../components/cards/cards'
 import Pagination from '../../components/pagination/pagination'
-import SearchBar from '../../components/searchBar/searchBar'
+import Filters from '../../components/filters/filters'
 
 const Home = () => {
 
@@ -39,8 +39,7 @@ const Home = () => {
 
     return (
       <div>
-        <div>Home</div>
-        <SearchBar handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <Filters handleChange={handleChange} handleSubmit={handleSubmit}/>
         <Cards allVideogames={allVideogames}/>
         <Pagination />
         </div>
