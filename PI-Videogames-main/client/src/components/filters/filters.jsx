@@ -1,4 +1,4 @@
-//import "./filters.css";
+import "./filters.styles.css";
 //ACTIONS
 import {getAllGenres, filterByGenre, filterBySource, orderVideogameS } from "../../redux/actions";
 
