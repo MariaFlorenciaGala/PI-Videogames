@@ -1,0 +1,40 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.buttonPage{
+    background-color: #068fc5;
+    border: none;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: 0;
+    right: 0;
+    transition: .9s ease;
+  }
+  
+  .buttonPage:hover {
+    transform: scale(1.1);
+    color: rgb(255, 255, 255);
+    background-color: #034d92d2;
+  }
+  .buttonPageActive{
+    background-color: #068fc588;
+    border: none;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: 0;
+    right: 0;
+    transition: .9s ease;
+  }

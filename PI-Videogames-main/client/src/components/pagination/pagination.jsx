@@ -1,4 +1,4 @@
-//import "./pagination.styles.css";
+import "./pagination.styles.css";
 
 //REDUX
 import { useState } from 'react'
@@ -16,7 +16,7 @@ const Pagination = ({totalItems, itemsPerPage, onPageChange, currentPage, setCur
     if(currentPage < totalPages){
       setCurrentPage(currentPage - 1)
       onPageChange(currentPage - 1)
-      window.scrollTo(0, 0)//Desplaza la pantalla haca arriba
+    //  window.scrollTo(0, 0)//Desplaza la pantalla haca arriba
     }
   }
 
@@ -24,7 +24,7 @@ const Pagination = ({totalItems, itemsPerPage, onPageChange, currentPage, setCur
     if(currentPage < totalPages){
       setCurrentPage(currentPage + 1)
       onPageChange(currentPage + 1)
-      window.scrollTo(0, 0)//Desplaza la pantalla haca arriba
+      //window.scrollTo(0, 0)//Desplaza la pantalla haca arriba
     }
   }
 
@@ -51,7 +51,7 @@ const Pagination = ({totalItems, itemsPerPage, onPageChange, currentPage, setCur
       pageNumbers.push(
         <button
           key={i}
-          className={currentPage === i ? 'active' : ''}
+          className={currentPage === i ? 'buttonPageActive' : 'buttonPage'}
           disabled={currentPage=== i ? 'active' : ''}
           onClick={() => handlePageChange(i)}
         >
