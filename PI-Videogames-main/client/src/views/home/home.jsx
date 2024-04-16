@@ -1,7 +1,7 @@
 //import "./home.css";
 
 //REACT - REDUX
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 //ACTIONS
@@ -17,33 +17,48 @@ const Home = () => {
 
   const dispatch = useDispatch()
   const allVideogames = useSelector(state => state.allVideogames)
+  const totalPagVideogames = allVideogames.length
 
-  //Estados
-  const [searchString, setSearchString] = useState("")
+  const [input, setInput] = useState('');
+
+  //PAGINACIÓN  
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 9;
+  const lastIndex = currentPage * itemsPerPage;//Ultimo índice
+  const firstIndex = lastIndex - itemsPerPage;//Primer índice
+  const currentItem = allVideogames.slice(firstIndex, lastIndex)//Página actual
+  const paginate =(pagNumber) => setCurrentPage(pagNumber)
+
+
 
   function handleChange(e) {
-    e.preventDefault()
-    setSearchString(e.target.value)//creo una función que me va a setear la palabra de búsqueda a lo que hay en el evento.target.value
+    const value = e.target.value;
+    setInput(value);//creo una función que me va a setear la palabra de búsqueda a lo que hay en el evento.target.value
   }
 
-  function handleSubmit(e){
+function handleSubmit(e){
     e.preventDefault()
-    dispatch(getByName(searchString)) 
+    dispatch(getByName(input)) 
+    setInput('')
+    setCurrentPage(1)    
   }
-
+  
   useEffect(() =>{
-    dispatch(getAllVideogames())//Suscripcion cuando se monta
-    
+    dispatch(getAllVideogames())//Suscripcion cuando se monta 
+    setCurrentPage(1)   
   }, [dispatch])
 
 
-
-    return (
+   return (
       <div>
-        <SearchBar />
-        <Filters handleChange={handleChange} handleSubmit={handleSubmit}/>
-        <Cards allVideogames={allVideogames}/>
-        <Pagination />
+        <SearchBar setCurrentPage={setCurrentPage} handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <Filters setCurrentPage={setCurrentPage}/>
+        <Cards allVideogames={currentItem}/>
+        <Pagination totalItems={allVideogames.length} 
+                    itemsPerPage={itemsPerPage}
+                    onPageChange={paginate}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage} />
         </div>
     )
     };
