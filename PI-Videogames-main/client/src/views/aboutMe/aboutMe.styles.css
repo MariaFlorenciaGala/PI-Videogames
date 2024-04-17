@@ -3,7 +3,7 @@
     width: 80%; /* Ancho del contenedor */
 }
 
-img {
+.img {
     width: auto;
     border-radius: 80px;
     float: right; /* Alinear la imagen a la derecha */
