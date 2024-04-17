@@ -3,7 +3,7 @@ function validation({
 	description,
 	image,
 	rating,
-	release_date,
+	released,
 	genres,
 	platforms,
 }){
@@ -29,11 +29,12 @@ function validation({
     if (!description || description.length < 20) {
 		errors.description = "La descripción no puede tener menos de 20 caracteres";
 	}
+	if(!released){
+		errors.released = "Por favor, ingresa una fecha"
+	}
 
-    if (rating < 1) {
-		errors.rating = "El rating mínimo es 1";
-	} else if (rating > 10.0) {
-		errors.rating = "El rating máximo es 10";
+    if (!rating) {
+		errors.rating = "Por favor, elije el rating";
 	}
     
     if(genres.length === 0){
