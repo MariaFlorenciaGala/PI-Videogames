@@ -1,0 +1,18 @@
+.container {
+    margin: 3% 15% 6% 10%; /* Margen 5% arriba y abajo, centrado horizontalmente */
+    width: 80%; /* Ancho del contenedor */
+}
+
+img {
+    width: auto;
+    border-radius: 80px;
+    float: right; /* Alinear la imagen a la derecha */
+    margin-left: 20px; /* Agregar un margen izquierdo para separar del contenido */
+}
+.containerMe{
+    margin-top: 1%;
+}
+p {
+    margin-top: 2%;
+    clear: both; /* Limpiar el float para evitar que el texto flote alrededor de la imagen */
+}
