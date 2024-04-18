@@ -1,0 +1,6 @@
+/* Estilos para el contenedor principal */
+.container {
+  display: flex;
+  background-color: #f8f9fa; /* Color de fondo */
+  color: rgb(68, 66, 66);
+}

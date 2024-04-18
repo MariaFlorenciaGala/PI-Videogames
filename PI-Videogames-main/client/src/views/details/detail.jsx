@@ -1,5 +1,4 @@
-
-//import "./detail.jsx";
+import "./detail.styles.css";
 
 //REACT - REDUX
 import { useEffect } from 'react';
@@ -21,18 +20,23 @@ const Detail = () => {
   }, [dispatch, id])
 
     return (
-      <div>
-        <div>X</div>
-        <h1>{videogameId.name}</h1>
-        <h2>Fecha de lanzamiento: {videogameId.released} </h2>
-        <h2>Generos: </h2> {
-                  videogameId.genres?.map((genre)=>{
-                      return <h3 key={genre.id} >{genre.name}</h3>
-                    })
-                    }
-        <h2>Descripción:</h2>
-          <div dangerouslySetInnerHTML= {{ __html: videogameId.description }}></div>   
-      </div>
+        <div className="container">
+          <div className="containerLeft">
+              <h1>{videogameId.name}</h1>
+              <h2>Fecha de lanzamiento: {videogameId.released} </h2>
+              <div>
+              <h2>Géneros: </h2> {
+                videogameId.genres?.map((genre)=>{
+                  return <li key={genre.id} >{genre.name}</li>
+                })
+              }
+          </div>
+          <div className="containerRight">
+              <h2>Descripción:</h2>
+              <div dangerouslySetInnerHTML= {{ __html: videogameId.description }}></div>   
+            </div>
+          </div>
+        </div>
     )
     };
   
