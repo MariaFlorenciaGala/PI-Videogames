@@ -52,7 +52,7 @@ const NewVideogame = () => {
     platforms: [],
   });
 
-  const [error, setError] = useState({
+  const [errors, setErrors] = useState({
     name: "",
     image: "",
     released: "",
@@ -66,12 +66,9 @@ const NewVideogame = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValor({ ...valor, [name]: value });
-    setError(
-      validation({
-        ...valor,
-        [name]: value,
-      })
-    );
+    const fieldError = validation({ ...valor, [name]: value });
+    setErrors({ ...errors, [name]: fieldError[name] });
+
   };
 
   const handleChangePlatforms = (event) => {
@@ -183,7 +180,7 @@ const NewVideogame = () => {
               value={valor.name}
               onChange={handleChange}
             />
-            <p className="error-message">{error.name}</p>
+            <p className="error-message">{errors.name}</p>
           </div>
           <div className="form-input">
             <label htmlFor="image">Imagen (URL):</label>
@@ -193,7 +190,7 @@ const NewVideogame = () => {
               value={valor.image}
               onChange={handleChange}
             />
-            <p className="error-message">{error.image}</p>
+            <p className="error-message">{errors.image}</p>
           </div>
           <div className="form-input">
             <label htmlFor="released">Lanzamiento:</label>
@@ -203,7 +200,7 @@ const NewVideogame = () => {
               value={valor.released}
               onChange={handleChange}
             />
-            <p className="error-message">{error.released}</p>
+            <p className="error-message">{errors.released}</p>
           </div>
           <div className="form-input">
             <label htmlFor="description">Descripción:</label>
@@ -214,7 +211,7 @@ const NewVideogame = () => {
               value={valor.description}
               onChange={handleChange}
             ></textarea>
-            <p className="error-message">{error.description}</p>
+            <p className="error-message">{errors.description}</p>
           </div>
         </div>
       </div>
@@ -238,7 +235,7 @@ const NewVideogame = () => {
                 <button onClick={() => handleClosePlatform(platform)}>x</button>
               </div>
             ))}
-            <p className="error-message">{error.platforms}</p>
+            <p className="error-message">{errors.platforms}</p>
           </div>
         </div>
         <div className="form-select">
@@ -260,7 +257,7 @@ const NewVideogame = () => {
                 <button onClick={() => handleCloseGenre(genre)}>x</button>
               </div>
             ))}
-            <p className="error-message">{error.genres}</p>
+            <p className="error-message">{errors.genres}</p>
           </div>
         </div>
         <div className="form-range">
@@ -275,12 +272,11 @@ const NewVideogame = () => {
             onChange={handleChange}
           />
           <span>{valor.rating}</span>
-          <p className="error-message">{error.rating}</p>
+          <p className="error-message">{errors.rating}</p>
         </div>
         <button
           type="submit"
-          className={`${Object.values(error).some((error) => error === "") ? 'disabled' : 'button-form'}`}
-          disabled={Object.values(error).some((error) => error !== "")}
+  className='button-form'
         >
           Crear
         </button>

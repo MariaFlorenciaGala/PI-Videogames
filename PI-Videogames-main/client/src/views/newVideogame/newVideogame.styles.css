@@ -39,7 +39,7 @@ h3{
     right: 0;
     transition: .9s ease;
   }
-  .disabled{
+.button-form:disabled{
     background-color: #4444443f;
     border: none;
     color: #fff;
