@@ -14,6 +14,7 @@ import {
 import validation from "../newVideogame/validation";
 
 const NewVideogame = () => {
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const genresApi = useSelector((state) => state.allGenres);
@@ -155,7 +156,19 @@ const NewVideogame = () => {
     event.preventDefault();
     dispatch(postVideogame(valor));
     navigate("/home");
+    // Limpiar los campos después de enviar el formulario
+    setValor({
+      name: "",
+      image: "",
+      released: "",
+      description: "",
+      rating: "",
+      genresName: [],
+      genres: [],
+      platforms: [],
+    });
   };
+  
 
   return (
     <form className="container-form" onSubmit={onSubmit}>
